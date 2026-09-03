@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<section class="page-hero">
+  <div class="container">
+    {% if page.kategorie and page.kategorie != "" %}<span class="eyebrow" style="color:#FFD9D3;">{{ page.kategorie }}</span><br>{% endif %}
+    <h1>{{ page.title }}</h1>
+  </div>
+</section>
+
+<article class="page-content">
+  <div class="container" style="max-width:820px;">
+
+    {% if page.image and page.image != "" %}
+      <div class="fleet-detail-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+    {% endif %}
+
+    <dl class="spec-grid">
+      {% if page.kategorie and page.kategorie != "" %}
+        <div class="spec-item"><dt>Kategorie</dt><dd>{{ page.kategorie }}</dd></div>
+      {% endif %}
+      {% if page.baujahr and page.baujahr != "" %}
+        <div class="spec-item"><dt>Baujahr</dt><dd>{{ page.baujahr }}</dd></div>
+      {% endif %}
+      {% if page.kennzeichen and page.kennzeichen != "" %}
+        <div class="spec-item"><dt>Kennzeichen</dt><dd>{{ page.kennzeichen }}</dd></div>
+      {% endif %}
+      {% if page.besatzung and page.besatzung != "" %}
+        <div class="spec-item"><dt>Besatzung</dt><dd>{{ page.besatzung }}</dd></div>
+      {% endif %}
+      {% if page.standort and page.standort != "" %}
+        <div class="spec-item"><dt>Standort</dt><dd>{{ page.standort }}</dd></div>
+      {% endif %}
+    </dl>
+
+    {{ content }}
+
+    <p style="margin-top:40px;"><a href="{{ '/ausruestung/' | relative_url }}">&larr; Zurück zur Übersicht</a></p>
+  </div>
+</article>

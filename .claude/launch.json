@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "export GEM_HOME=\"$HOME/.local-gems/webseite-feuerwehr\"; export PATH=\"/opt/homebrew/opt/ruby@3.4/bin:$GEM_HOME/bin:$PATH\"; bundle exec jekyll serve --host 0.0.0.0 --port 4000"],
+      "port": 4000
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+---
+layout: default
+title: Home
+---
+<section class="hero"{% if site.hero_image and site.hero_image != "" %} style="--hero-image:url('{{ site.hero_image | relative_url }}')"{% endif %}>
+  <div class="container hero-inner">
+    <span class="eyebrow">{{ site.short_title | default: site.title }}</span>
+    <h1>{{ site.tagline }}</h1>
+    <p class="lead">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/mitglied-werden/' | relative_url }}">Mitglied werden</a>
+      <a class="btn btn-outline" href="{{ '/organisation/' | relative_url }}">Unsere Organisation</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="container">
+      <div class="stat">
+        <span class="num">{{ site.stats.einwohner }}</span>
+        <span class="label">Einwohner geschützt</span>
+      </div>
+      <div class="stat">
+        <span class="num">{{ site.stats.flaeche_km2 }} km²</span>
+        <span class="label">Einsatzgebiet</span>
+      </div>
+      <div class="stat">
+        <span class="num">{{ site.stats.mitglieder }}</span>
+        <span class="label">Feuerwehrleute</span>
+      </div>
+      <div class="stat">
+        <span class="num">{{ site.stats.offiziere }}</span>
+        <span class="label">Offiziere im Kommando</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Auf einen Blick</span>
+      <h2>Wie wir für Ihre Sicherheit sorgen</h2>
+      <p class="lead">Vom Ernstfall über die Ausbildung bis zum Mitmachen — hier findest du alles Wichtige zur {{ site.title }}.</p>
+    </div>
+
+    <div class="panel-grid">
+      <div class="panel">
+        <div class="panel-icon">🚒</div>
+        <h3>Unsere Organisation</h3>
+        <p>Milizfeuerwehr der Gemeinden {{ site.stats.gemeinden }} mit {{ site.stats.mitglieder }} Feuerwehrleuten im Einsatz.</p>
+        <a class="panel-link" href="{{ '/organisation/' | relative_url }}">Mehr erfahren →</a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-icon">📰</div>
+        <h3>Neuigkeiten</h3>
+        <p>Aktuelles aus Übungen, Ausbildung und dem Feuerwehralltag.</p>
+        <a class="panel-link" href="{{ '/neuigkeiten/' | relative_url }}">Alle Neuigkeiten →</a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-icon">📋</div>
+        <h3>Einsätze</h3>
+        <p>Übersicht über unsere jüngsten Einsätze im Einsatzgebiet.</p>
+        <a class="panel-link" href="{{ '/einsaetze/' | relative_url }}">Einsatzübersicht →</a>
+      </div>
+
+      <div class="panel panel-red">
+        <div class="panel-icon">☎️</div>
+        <h3>Im Notfall</h3>
+        <p>Feuerwehr-Notruf</p>
+        <p style="font-size:2rem;font-weight:800;margin-bottom:0;">118</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-icon">🤝</div>
+        <h3>Mitglied werden</h3>
+        <p>Werde Teil unserer Mannschaft und leiste einen wichtigen Beitrag für deine Gemeinde.</p>
+        <a class="panel-link" href="{{ '/mitglied-werden/' | relative_url }}">Jetzt bewerben →</a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-icon">📍</div>
+        <h3>Kontakt</h3>
+        <p>{{ site.contact.strasse }}, {{ site.contact.ort }}</p>
+        <a class="panel-link" href="{{ '/kontakt/' | relative_url }}">Kontaktdaten →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Neuigkeiten</span>
+      <h2>Aktuelles aus der Feuerwehr</h2>
+    </div>
+
+    <ul class="post-list">
+      {% for post in site.posts limit:3 %}
+        <li class="post-card">
+          <div>
+            <span class="date">{{ post.date | date: "%d.%m.%Y" }}</span>
+          </div>
+          <div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncatewords: 24 }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Einsätze</span>
+      <h2>Letzte Einsätze</h2>
+    </div>
+
+    <ul class="einsatz-list">
+      {% assign einsaetze = site.einsaetze | sort: 'date' | reverse %}
+      {% for e in einsaetze limit:5 %}
+        <li class="einsatz-row">
+          <span class="when">{{ e.date | date: "%d.%m.%Y" }} · {{ e.time }}</span>
+          <span class="what"><a href="{{ e.url | relative_url }}">{{ e.title }}</a></span>
+          <span class="where">{{ e.ort }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h2>Wir suchen Verstärkung!</h2>
+        <p>Du bist motiviert, Neues zu lernen und für deine Gemeinde da zu sein? Werde Teil unserer Mannschaft.</p>
+      </div>
+      <a class="btn btn-primary" href="{{ '/mitglied-werden/' | relative_url }}">Jetzt Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>

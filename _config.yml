@@ -1,0 +1,115 @@
+# ---------------------------------------------------------------------------
+# Grundeinstellungen — hier die Angaben deiner Feuerwehr eintragen
+# ---------------------------------------------------------------------------
+title: "Feuerwehr Oberer Sempachersee"
+short_title: "FW Oberer Sempachersee"
+logo: "/assets/images/fwos.webp"
+# Hintergrundfoto im Hero-Bereich der Startseite (z. B. Feuerwehrauto).
+# Datei unter diesem Pfad ablegen (leer lassen = Rot-Verlauf ohne Foto).
+hero_image: "/assets/images/hero.jpg"
+tagline: "Unsere Motivation ist Ihre Sicherheit"
+description: >-
+  Die Feuerwehr Oberer Sempachersee ist eine Hilfsorganisation im Milizsystem und sorgt
+  rund um die Uhr für die Sicherheit der Bevölkerung.
+url: "https://gulaschkanone.github.io"
+baseurl: "/fwos-website"
+
+# Einsatzgebiet / Kennzahlen (werden auf der Startseite angezeigt)
+stats:
+  gemeinden: "Sempach, Eich, Hildisrieden"
+  flaeche_km2: "21.9"
+  einwohner: "8'240"
+  mitglieder: "124"
+  offiziere: "10"
+
+# Kontakt
+contact:
+  kommandant: "Hptm. Max Muster"
+  strasse: "Feuerwehrstrasse 3"
+  ort: "6210 Sempach"
+  email: "kommandant@fwos.ch"
+
+# Notrufnummern (Panel "Im Notfall")
+emergency_numbers:
+  - name: "Feuerwehr"
+    number: "118"
+  - name: "Polizei"
+    number: "117"
+  - name: "Sanitätsnotruf"
+    number: "144"
+  - name: "Rega"
+    number: "1414"
+  - name: "Toxinfo"
+    number: "145"
+
+# Social Media (leer lassen = wird nicht angezeigt)
+social:
+  facebook: ""
+  instagram: ""
+
+# Hauptnavigation
+nav:
+  - title: "Home"
+    url: "/"
+  - title: "Organisation"
+    url: "/organisation/"
+  - title: "Ausrüstung"
+    url: "/ausruestung/"
+  - title: "Einsätze"
+    url: "/einsaetze/"
+  - title: "Neuigkeiten"
+    url: "/neuigkeiten/"
+  - title: "Mitglied werden"
+    url: "/mitglied-werden/"
+  - title: "Kontakt"
+    url: "/kontakt/"
+
+# ---------------------------------------------------------------------------
+# Build-Einstellungen
+# ---------------------------------------------------------------------------
+markdown: kramdown
+permalink: /:title/
+
+collections:
+  einsaetze:
+    output: true
+    permalink: /einsaetze/:path/
+  ausruestung:
+    output: true
+    permalink: /ausruestung/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "einsaetze"
+    values:
+      layout: "einsatz"
+  - scope:
+      path: ""
+      type: "ausruestung"
+    values:
+      layout: "fahrzeug"
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor

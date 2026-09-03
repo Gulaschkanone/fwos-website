@@ -1,0 +1,54 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="{{ '/' | relative_url }}" style="margin-bottom:14px;">
+          {% if site.logo %}
+            <span class="brand-logo-plate"><img class="brand-logo" src="{{ site.logo | relative_url }}" alt="{{ site.title }}"></span>
+          {% else %}
+            <span class="brand-mark">{{ site.short_title | default: site.title | slice: 0, 2 | upcase }}</span>
+            <span class="brand-text">
+              <span class="name" style="color:#fff;">{{ site.title }}</span>
+            </span>
+          {% endif %}
+        </a>
+        <p>{{ site.description }}</p>
+      </div>
+
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          {% for item in site.nav %}
+            <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Notruf</h4>
+        <ul>
+          {% for n in site.emergency_numbers %}
+            <li>{{ n.name }}: <strong style="color:#fff;">{{ n.number }}</strong></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>{{ site.contact.strasse }}</li>
+          <li>{{ site.contact.ort }}</li>
+          <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+          <li><a href="tel:{{ site.contact.telefon | replace: ' ', '' }}">{{ site.contact.telefon }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ site.time | date: '%Y' }} {{ site.title }} — Alle Rechte vorbehalten.</span>
+      <span><a href="{{ '/impressum/' | relative_url }}">Impressum / Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
