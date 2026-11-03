@@ -11,8 +11,8 @@ tagline: "Unsere Motivation ist Ihre Sicherheit"
 description: >-
   Die Feuerwehr Oberer Sempachersee ist eine Hilfsorganisation im Milizsystem und sorgt
   rund um die Uhr für die Sicherheit der Bevölkerung.
-url: "https://gulaschkanone.github.io"
-baseurl: "/fwos-website"
+url: "https://fwos.ch"
+baseurl: ""
 
 # Einsatzgebiet / Kennzahlen (werden auf der Startseite angezeigt)
 stats:

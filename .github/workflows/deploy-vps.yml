@@ -1,0 +1,58 @@
+name: Deploy auf VPS
+
+# Baut die Seite und lädt sie per rsync nach /var/www/fwos auf den VPS.
+# Benötigte Repository-Secrets:
+#   VPS_SSH_KEY     privater Schlüssel des Benutzers "deploy"
+#   VPS_KNOWN_HOSTS Zeile(n) aus "ssh-keyscan 185.143.102.218"
+on:
+  push:
+    branches: ["main", "vps-deploy"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "vps-deploy"
+  cancel-in-progress: false
+
+env:
+  VPS_HOST: "185.143.102.218"
+  VPS_USER: "deploy"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: SSH einrichten
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Hochladen
+        # Der Server erzwingt per rrsync /var/www/fwos als Ziel,
+        # "./" ist deshalb relativ zu diesem Ordner.
+        run: |
+          rsync -rlt --delete --checksum --chmod=D755,F644 \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            _site/ "${VPS_USER}@${VPS_HOST}:./"
+
+      - name: Aufräumen
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
