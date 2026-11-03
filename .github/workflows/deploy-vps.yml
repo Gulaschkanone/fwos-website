@@ -6,7 +6,7 @@ name: Deploy auf VPS
 #   VPS_KNOWN_HOSTS Zeile(n) aus "ssh-keyscan 185.143.102.218"
 on:
   push:
-    branches: ["main", "vps-deploy"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
