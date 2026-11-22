@@ -46,12 +46,12 @@ jobs:
           printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
       - name: Hochladen
-        # Der Server erzwingt per rrsync /var/www/fwos als Ziel,
-        # "./" ist deshalb relativ zu diesem Ordner.
+        # Der Server erzwingt per rrsync /var/www/fwos als Ziel; "." ist dieser Ordner.
+        # Nicht "./" verwenden: neuere rrsync-Versionen lehnen das als "unsafe arg" ab.
         run: |
           rsync -rlt --delete --checksum --chmod=D755,F644 \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
-            _site/ "${VPS_USER}@${VPS_HOST}:./"
+            _site/ "${VPS_USER}@${VPS_HOST}:."
 
       - name: Aufräumen
         if: always()
