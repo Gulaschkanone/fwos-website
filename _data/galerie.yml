@@ -1,0 +1,20 @@
+# Alben der Seite /galerie/ (Impressionen aus dem Feuerwehrdienst).
+#
+# Pro Album:
+#   1. Ordner anlegen: assets/images/galerie/<ordner>/
+#   2. Fotos hineinlegen (.jpg, .png, .webp; vorher auf ca. 1600 px Breite
+#      verkleinern). Reihenfolge = alphabetisch nach Dateiname.
+#   3. Hier einen Eintrag ergänzen. Die Alben erscheinen in der Reihenfolge
+#      dieser Liste, also das neueste zuoberst eintragen.
+#
+#   - ordner: "2025-09-hauptuebung"   # Name des Unterordners (Pflicht)
+#     titel: "Hauptübung 2025"         # Überschrift (Pflicht)
+#     datum: 2025-09-20                # optional, wird als TT.MM.JJJJ angezeigt
+#     text: "Kurzer Beschreibungstext" # optional
+#
+# Alben ohne Fotos werden automatisch ausgeblendet.
+
+alben:
+  - ordner: "impressionen"
+    titel: "Impressionen"
+    text: "Eindrücke aus Übungen und Einsätzen der Feuerwehr Oberer Sempachersee."

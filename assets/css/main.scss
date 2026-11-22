@@ -228,7 +228,7 @@ p { margin: 0 0 1em; }
     overflow: hidden;
     transition: max-height .25s ease;
   }
-  .main-nav.open { max-height: 420px; }
+  .main-nav.open { max-height: 520px; }
   .main-nav ul { flex-direction: column; gap: 0; padding: 8px; }
   .main-nav a { padding: 12px 14px; }
   .topbar .container { justify-content: center; }
@@ -928,6 +928,26 @@ $og-material: #B7862C;
   transition: transform .2s ease;
 }
 .galerie-bild:hover img { transform: scale(1.04); }
+
+// Seite /galerie/ (galerie.md, Alben aus _data/galerie.yml)
+.galerie-album + .galerie-album {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid $paper-soft;
+}
+.galerie-album h2 {
+  margin: 0 0 4px;
+  padding-left: 14px;
+  border-left: 4px solid $feuerrot;
+  line-height: 1.25;
+}
+.galerie-datum {
+  margin: 0 0 0 18px;
+  color: $ink-soft;
+  font-size: .9rem;
+}
+.galerie-text { margin: 12px 0 0; max-width: 760px; }
+.galerie-album .galerie { margin-top: 20px; }
 
 .lightbox {
   border: 0;

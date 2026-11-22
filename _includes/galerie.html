@@ -9,13 +9,25 @@
     {% include galerie.html ordner="offiziere" %}
     zeigt die Bilder im Unterordner .../<Post>/offiziere/
 
+  Mit Parameter "pfad" (z. B. für die Seite /galerie/):
+    {% include galerie.html pfad="/assets/images/galerie/2025-hauptuebung/" alt="Hauptübung 2025" %}
+    zeigt die Bilder in genau diesem Ordner; "alt" ersetzt den Seitentitel
+    in der Bildbeschreibung.
+
   Sortierung alphabetisch nach Dateiname.
 {%- endcomment -%}
-{%- assign post_name = page.path | split: '/' | last | remove: '.md' -%}
-{%- assign ordner = '/assets/images/neuigkeiten/' | append: post_name | append: '/' -%}
-{%- if include.ordner -%}
-  {%- assign ordner = ordner | append: include.ordner | append: '/' -%}
+{%- if include.pfad -%}
+  {%- assign ordner = include.pfad -%}
+  {%- assign letztes = ordner | slice: -1 -%}
+  {%- if letztes != '/' -%}{%- assign ordner = ordner | append: '/' -%}{%- endif -%}
+{%- else -%}
+  {%- assign post_name = page.path | split: '/' | last | remove: '.md' -%}
+  {%- assign ordner = '/assets/images/neuigkeiten/' | append: post_name | append: '/' -%}
+  {%- if include.ordner -%}
+    {%- assign ordner = ordner | append: include.ordner | append: '/' -%}
+  {%- endif -%}
 {%- endif -%}
+{%- assign alt_text = include.alt | default: page.title -%}
 {%- assign bilder = site.static_files | where_exp: "f", "f.path contains ordner" | sort: 'path' -%}
 {%- assign anzahl = 0 -%}
 {%- capture items -%}
@@ -26,7 +38,7 @@
     {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' or ext == '.gif' -%}
       {%- assign anzahl = anzahl | plus: 1 -%}
       <a class="galerie-bild" href="{{ f.path | relative_url }}">
-        <img src="{{ f.path | relative_url }}" alt="{{ page.title }} – Bild {{ anzahl }}" loading="lazy">
+        <img src="{{ f.path | relative_url }}" alt="{{ alt_text | escape }} – Bild {{ anzahl }}" loading="lazy">
       </a>
     {%- endif -%}
   {%- endfor -%}

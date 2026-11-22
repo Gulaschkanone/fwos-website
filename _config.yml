@@ -63,6 +63,8 @@ nav:
     url: "/termine/"
   - title: "Neuigkeiten"
     url: "/neuigkeiten/"
+  - title: "Galerie"
+    url: "/galerie/"
   - title: "Mitglied werden"
     url: "/mitglied-werden/"
   - title: "Kontakt"

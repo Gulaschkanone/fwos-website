@@ -70,6 +70,20 @@ einfügen (Snippet `galerie`).
 
 Vorschau: `Ctrl+Shift+V` zeigt das Markdown direkt in VS Code an.
 
+## Galerie (Impressionen)
+
+Die Seite `/galerie/` zeigt Fotoalben. Pro Album:
+
+1. Ordner `assets/images/galerie/<ordner>/` anlegen, z. B.
+   `assets/images/galerie/2025-09-hauptuebung/`.
+2. Fotos hineinlegen (vorher auf ca. 1600 px Breite verkleinern; Reihenfolge
+   alphabetisch nach Dateiname).
+3. In `_data/galerie.yml` einen Eintrag ergänzen (`ordner`, `titel`, optional
+   `datum` und `text`). Die Alben erscheinen in der Reihenfolge der Liste,
+   also das neueste zuoberst. Alben ohne Fotos werden ausgeblendet.
+
+Ein Klick auf ein Foto öffnet es gross (Pfeiltasten blättern).
+
 ## Struktur
 
 ```
