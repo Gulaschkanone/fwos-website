@@ -3,8 +3,8 @@ title: "Tanklöschfahrzeug (TLF)"
 kategorie: "Löschfahrzeug"
 icon: "🚒"
 baujahr: ""
-kennzeichen: ""
-besatzung: ""
+kennzeichen: "LU416"
+besatzung: "2"
 standort: "Magazin Sempach"
 order: 1
 ---
