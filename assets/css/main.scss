@@ -969,11 +969,12 @@ $og-material: #B7862C;
 // ---------------------------------------------------------------------------
 .termine {
   --fc-border-color: #{$line};
+  // Knöpfe im Stil der Webseite (.btn-outline-red / .btn-primary)
   --fc-button-bg-color: #{$paper};
-  --fc-button-border-color: #{$line};
-  --fc-button-text-color: #{$ink};
-  --fc-button-hover-bg-color: #{$paper-soft};
-  --fc-button-hover-border-color: #{$line};
+  --fc-button-border-color: #{$feuerrot};
+  --fc-button-text-color: #{$feuerrot};
+  --fc-button-hover-bg-color: #{$feuerrot};
+  --fc-button-hover-border-color: #{$feuerrot};
   --fc-button-active-bg-color: #{$feuerrot};
   --fc-button-active-border-color: #{$feuerrot};
   --fc-today-bg-color: #{rgba($feuerrot, .07)};
@@ -993,15 +994,26 @@ $og-material: #B7862C;
 
 .termine-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .termine-filter-btn {
-  font: inherit; font-weight: 700; font-size: .9rem;
-  padding: 8px 18px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-weight: 700; font-size: .9rem; letter-spacing: .01em;
+  padding: 8px 18px; border-radius: $radius; cursor: pointer;
   border: 2px solid $feuerrot; background: $paper; color: $feuerrot;
+  transition: background .15s ease, color .15s ease;
 }
 .termine-filter-btn.aktiv, .termine-filter-btn:hover { background: $feuerrot; color: $paper; }
+.termine-filter-btn:focus-visible { outline: 3px solid rgba($feuerrot, .35); outline-offset: 2px; }
 
 .termine-kalender .fc-toolbar-title { font-size: 1.3rem; text-transform: capitalize; }
-.termine-kalender .fc-button { font-weight: 600; text-transform: none; box-shadow: none !important; }
-.termine-kalender .fc-button-active { color: $paper !important; }
+// .termine davor: stärker als die Regeln von FullCalendar (das .fc auf #termine-kalender selbst setzt)
+.termine .termine-kalender .fc-button {
+  font-weight: 700; font-size: .9rem; letter-spacing: .01em; text-transform: none;
+  border-width: 2px; border-radius: $radius; padding: 6px 14px;
+  box-shadow: none !important; transition: background .15s ease, color .15s ease;
+}
+.termine .termine-kalender .fc-button-group > .fc-button:not(:first-child) { margin-left: -2px; }
+.termine .termine-kalender .fc-button:hover:not(:disabled),
+.termine .termine-kalender .fc-button.fc-button-active { color: $paper; }
+.termine .termine-kalender .fc-button:focus-visible { outline: 3px solid rgba($feuerrot, .35); outline-offset: 2px; z-index: 2; }
+.termine .termine-kalender .fc-button:disabled { opacity: .45; }
 .termine-kalender .fc-col-header-cell-cushion,
 .termine-kalender .fc-daygrid-day-number { color: $ink; text-decoration: none; }
 .termine-kalender .fc-event { font-size: .8rem; }
