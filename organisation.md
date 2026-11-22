@@ -120,7 +120,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
-        <span class="orgchart-role">Oelwehr-Offizier</span>
+        <span class="orgchart-role">Ölwehr-Offizier</span>
         <span class="orgchart-name">Oblt Thomas Kamber</span>
       </div>
 
