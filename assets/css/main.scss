@@ -963,3 +963,71 @@ $og-material: #B7862C;
   cursor: pointer;
 }
 .lightbox-bar button:hover { background: $feuerrot; }
+
+// ---------------------------------------------------------------------------
+// Termine (Kalender mit FullCalendar, Daten aus app.fwos.ch/kalender)
+// ---------------------------------------------------------------------------
+.termine {
+  --fc-border-color: #{$line};
+  --fc-button-bg-color: #{$paper};
+  --fc-button-border-color: #{$line};
+  --fc-button-text-color: #{$ink};
+  --fc-button-hover-bg-color: #{$paper-soft};
+  --fc-button-hover-border-color: #{$line};
+  --fc-button-active-bg-color: #{$feuerrot};
+  --fc-button-active-border-color: #{$feuerrot};
+  --fc-today-bg-color: #{rgba($feuerrot, .07)};
+  --fc-event-bg-color: #{$feuerrot};
+  --fc-event-border-color: #{$feuerrot};
+  --fc-list-event-hover-bg-color: #{$paper-soft};
+  --fc-page-bg-color: #{$paper};
+}
+// Die Tabellen-Stile der Seite (rote Kopfzeile, Streifen) nicht auf den Kalender anwenden.
+// :where() hält die Spezifität niedrig, damit die Stile von FullCalendar gelten.
+.page-content :where(.fc) table { margin: 0; font-size: 1em; display: table; white-space: normal; }
+.page-content :where(.fc) th,
+.page-content :where(.fc) td { padding: 0; border-bottom: 0; text-align: inherit; vertical-align: top; }
+.page-content :where(.fc) th { background: none; color: inherit; border-radius: 0; text-align: center; }
+.page-content :where(.fc) tbody tr:nth-child(even) { background: none; }
+.page-content :where(.fc) ul { padding-left: 0; }
+
+.termine-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.termine-filter-btn {
+  font: inherit; font-weight: 700; font-size: .9rem;
+  padding: 8px 18px; border-radius: 999px; cursor: pointer;
+  border: 2px solid $feuerrot; background: $paper; color: $feuerrot;
+}
+.termine-filter-btn.aktiv, .termine-filter-btn:hover { background: $feuerrot; color: $paper; }
+
+.termine-kalender .fc-toolbar-title { font-size: 1.3rem; text-transform: capitalize; }
+.termine-kalender .fc-button { font-weight: 600; text-transform: none; box-shadow: none !important; }
+.termine-kalender .fc-button-active { color: $paper !important; }
+.termine-kalender .fc-col-header-cell-cushion,
+.termine-kalender .fc-daygrid-day-number { color: $ink; text-decoration: none; }
+.termine-kalender .fc-event { font-size: .8rem; }
+// Titel in der Monatsansicht umbrechen statt abschneiden
+.termine-kalender .fc-daygrid-event { white-space: normal; align-items: flex-start; }
+.termine-kalender .fc-daygrid-event .fc-event-title { overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
+.termine-kalender .fc-daygrid-event .fc-event-time { flex-shrink: 0; }
+// FullCalendar setzt .fc auf #termine-kalender selbst; .termine davor macht die Regeln stärker als seine
+@media (max-width: 700px) {
+  .termine .termine-kalender .fc-toolbar { flex-wrap: wrap; gap: 10px; }
+  .termine .termine-kalender .fc-toolbar-chunk:nth-child(2) { order: -1; flex-basis: 100%; text-align: center; }
+  .termine .termine-kalender .fc-toolbar-title { font-size: 1.15rem; }
+}
+.termine-kalender .termin-rapport { --fc-event-bg-color: #{$ink-soft}; --fc-event-border-color: #{$ink-soft}; }
+.termine-kalender .termin-anderer { --fc-event-bg-color: #{$feuerrot-darker}; --fc-event-border-color: #{$feuerrot-darker}; }
+.termine-kalender .termin-rapport .fc-list-event-dot { border-color: $ink-soft; }
+.termine-kalender .termin-anderer .fc-list-event-dot { border-color: $feuerrot-darker; }
+.termine-kalender .fc-list-day-cushion { background: $paper-soft; }
+.termine-ort { display: block; color: $ink-soft; font-size: .85rem; }
+
+.termine-abo {
+  margin-top: 40px; padding: 24px; border-radius: $radius;
+  background: $paper-soft; border: 1px solid $line;
+}
+.termine-abo h2 { margin-top: 0; font-size: 1.3rem; }
+.termine-abo-knoepfe { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.termine-abo code { word-break: break-all; }
+.termine-hinweis { font-size: .9rem; color: $ink-soft; }
+#termine-fehler { color: $feuerrot-dark; font-weight: 600; }

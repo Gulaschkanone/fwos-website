@@ -7,6 +7,8 @@ logo: "/assets/images/fwos.webp"
 # Hintergrundfoto im Hero-Bereich der Startseite (z. B. Feuerwehrauto).
 # Datei unter diesem Pfad ablegen (leer lassen = Rot-Verlauf ohne Foto).
 hero_image: "/assets/images/hero.jpg"
+# Öffentlicher Terminkalender der App (Seite /termine/ und Kalender-Abo)
+kalender_url: "https://app.fwos.ch/kalender"
 tagline: "Unsere Motivation ist Ihre Sicherheit"
 description: >-
   Die Feuerwehr Oberer Sempachersee ist eine Hilfsorganisation im Milizsystem und sorgt
@@ -57,6 +59,8 @@ nav:
     url: "/ausruestung/"
   - title: "Einsätze"
     url: "/einsaetze/"
+  - title: "Termine"
+    url: "/termine/"
   - title: "Neuigkeiten"
     url: "/neuigkeiten/"
   - title: "Mitglied werden"

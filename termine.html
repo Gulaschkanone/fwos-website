@@ -1,0 +1,43 @@
+---
+title: Termine
+eyebrow: Übungen und Anlässe
+permalink: /termine/
+layout: page
+description: Termine der Feuerwehr Oberer Sempachersee als Kalender – auch zum Abonnieren.
+---
+
+<div class="termine" data-kalender-url="{{ site.kalender_url }}">
+  <div class="termine-filter" role="group" aria-label="Termine anzeigen für">
+    <button type="button" class="termine-filter-btn aktiv" data-zug="">Alle Termine</button>
+    <button type="button" class="termine-filter-btn" data-zug="1">Zug 1</button>
+    <button type="button" class="termine-filter-btn" data-zug="2">Zug 2</button>
+  </div>
+
+  <div id="termine-kalender" class="termine-kalender" aria-live="polite"></div>
+  <p class="termine-hinweis" id="termine-fehler" hidden>
+    Die Termine konnten nicht geladen werden. Bitte später erneut versuchen.
+  </p>
+
+  <div class="termine-abo">
+    <h2>Kalender abonnieren</h2>
+    <p>
+      Mit einem Abo erscheinen die Termine <strong><span id="termine-abo-name">aller Formationen</span></strong>
+      direkt in deinem Kalender (iPhone, Android, Outlook, Google) und werden automatisch aktualisiert.
+    </p>
+    <div class="termine-abo-knoepfe">
+      <a class="btn btn-primary" id="termine-abo-webcal" href="webcal://app.fwos.ch/kalender/fwos.ics">Im Kalender abonnieren</a>
+      <a class="btn btn-outline-red" id="termine-abo-google" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fapp.fwos.ch%2Fkalender%2Ffwos.ics"
+         target="_blank" rel="noopener">Google Kalender</a>
+      <button type="button" class="btn btn-outline-red" id="termine-abo-kopieren">Link kopieren</button>
+    </div>
+    <p class="termine-hinweis">
+      Link zum Abonnieren: <code id="termine-abo-link">https://app.fwos.ch/kalender/fwos.ics</code><br>
+      Outlook: Kalender hinzufügen → «Aus dem Internet» und diesen Link einfügen.
+      Änderungen erscheinen je nach Kalender-App nach einigen Stunden.
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.19/locales/de.global.min.js"></script>
+<script src="{{ '/assets/js/termine.js' | relative_url }}"></script>
