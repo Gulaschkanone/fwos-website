@@ -622,6 +622,8 @@ $og-material: #B7862C;
   font-size: .86rem;
   line-height: 1.4;
   box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  hyphens: auto;              // lange Funktionsbezeichnungen sauber trennen
+  overflow-wrap: break-word;
 }
 .orgchart-node .orgchart-role {
   display: block;
@@ -685,11 +687,15 @@ $og-material: #B7862C;
 }
 .orgchart-col--stab { justify-content: flex-start; }
 
+// Zwei zusammengehörige Funktionen (z. B. Kommandant Stv. 1 und 2): untereinander,
+// nebeneinander wären die Karten in einer Drittelsspalte zu schmal für Namen.
 .orgchart-node-pair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
 }
+// Aufzählungen (Fahrzeuge) nur zwischen den Einträgen umbrechen
+.orgchart-liste > span { white-space: nowrap; }
 
 .orgchart-legend {
   list-style: none;
@@ -728,7 +734,6 @@ $og-material: #B7862C;
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .orgchart-node-pair { grid-template-columns: 1fr; }
 }
 
 // ---------------------------------------------------------------------------

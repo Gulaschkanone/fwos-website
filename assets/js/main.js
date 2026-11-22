@@ -114,8 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var middle = colInfo[Math.floor(colInfo.length / 2)];
       var lastBlock = middle.blocks[middle.blocks.length - 1];
       var magRect = rectRelativeTo(magazin, root);
+      // Senkrecht von der mittleren Spalte nach unten (Magazin ist breiter und darunter zentriert)
       svg.appendChild(
-        makeLine(lastBlock.centerX, lastBlock.bottom, magRect.centerX, magRect.top)
+        makeLine(lastBlock.centerX, lastBlock.bottom, lastBlock.centerX, magRect.top)
       );
     }
   }

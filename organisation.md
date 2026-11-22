@@ -140,8 +140,12 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
-        <span class="orgchart-role">Chef Elektro / Chef Sanität / Chef Verkehr</span>
-        <span class="orgchart-name">Kpl Florian Koller · Kpl Nicola Kaufmann · Kpl Mathias Niggli</span>
+        <span class="orgchart-role">Chef Elektro</span>
+        <span class="orgchart-name">Kpl Florian Koller</span>
+        <span class="orgchart-role">Chef Sanität</span>
+        <span class="orgchart-name">Kpl Nicola Kaufmann</span>
+        <span class="orgchart-role">Chef Verkehr</span>
+        <span class="orgchart-name">Kpl Mathias Niggli</span>
       </div>
     </div>
 
@@ -149,7 +153,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
 
   <div class="orgchart-node orgchart-node--material orgchart-node--magazin" data-og-role="magazin">
     <span class="orgchart-role">Magazin Sempach</span>
-    <span class="orgchart-name">TLF · Materialfahrzeug · SV · Personentransporter · 2 Zugfahrzeuge</span>
+    <span class="orgchart-name orgchart-liste"><span>TLF</span> · <span>Materialfahrzeug</span> · <span>SV</span> · <span>Personentransporter</span> · <span>2 Zugfahrzeuge</span></span>
   </div>
 
   <ul class="orgchart-legend">
