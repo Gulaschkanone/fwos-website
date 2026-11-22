@@ -1,0 +1,28 @@
+{%- comment -%}
+  Einzelbild mit Bildunterschrift.
+
+  Verwendung in einer Neuigkeit:
+    {% include bild.html datei="offiziere/offiziere.jpeg" text="Von links: …" %}
+
+  - datei: Pfad relativ zum Bildordner des Posts
+           (assets/images/neuigkeiten/<Dateiname des Posts ohne .md>/).
+           Ein Pfad, der mit "/" beginnt, wird unverändert verwendet.
+  - text:  Bildunterschrift (optional). Dient auch als Beschreibung für
+           Screenreader, ausser es ist zusätzlich "alt" angegeben.
+{%- endcomment -%}
+{%- assign post_name = page.path | split: '/' | last | remove: '.md' -%}
+{%- assign erstes_zeichen = include.datei | slice: 0 -%}
+{%- if erstes_zeichen == '/' -%}
+  {%- assign pfad = include.datei -%}
+{%- else -%}
+  {%- assign pfad = '/assets/images/neuigkeiten/' | append: post_name | append: '/' | append: include.datei -%}
+{%- endif -%}
+{%- assign alt = include.alt | default: include.text | default: page.title -%}
+<figure class="bild">
+  <a class="bild-link" href="{{ pfad | relative_url }}"{% if include.text %} data-caption="{{ include.text | escape }}"{% endif %}>
+    <img src="{{ pfad | relative_url }}" alt="{{ alt | strip_html | escape }}" loading="lazy">
+  </a>
+  {%- if include.text %}
+  <figcaption>{{ include.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
+  {%- endif %}
+</figure>

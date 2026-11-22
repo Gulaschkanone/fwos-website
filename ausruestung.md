@@ -29,4 +29,3 @@ Unser Fuhrpark ist im Magazin Sempach stationiert und deckt die ganze Bandbreite
   {% endfor %}
 </div>
 
-<p style="margin-top:32px;color:#4A4744;font-size:.9rem;">Neue Einträge werden als Datei im Ordner <code>_ausruestung/</code> hinzugefügt.</p>

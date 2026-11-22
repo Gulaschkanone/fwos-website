@@ -134,3 +134,57 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", debounce(drawOrgChart, 150));
   });
 })();
+
+// Bildergalerie und Einzelbilder: Klick auf ein Bild öffnet es gross (Pfeiltasten blättern, Esc schliesst).
+(function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".galerie-bild, .bild-link"));
+    if (!links.length || typeof HTMLDialogElement === "undefined") return;
+
+    var dialog = document.createElement("dialog");
+    dialog.className = "lightbox";
+    dialog.innerHTML =
+      '<img alt="">' +
+      '<p class="lightbox-caption"></p>' +
+      '<div class="lightbox-bar">' +
+      '<button type="button" data-step="-1" aria-label="Vorheriges Bild">&larr;</button>' +
+      '<button type="button" data-close aria-label="Schliessen">&times;</button>' +
+      '<button type="button" data-step="1" aria-label="Nächstes Bild">&rarr;</button>' +
+      "</div>";
+    document.body.appendChild(dialog);
+    var img = dialog.querySelector("img");
+    var caption = dialog.querySelector(".lightbox-caption");
+    var current = 0;
+
+    function show(i) {
+      current = (i + links.length) % links.length;
+      img.src = links[current].href;
+      img.alt = links[current].querySelector("img").alt;
+      caption.textContent = links[current].getAttribute("data-caption") || "";
+    }
+
+    if (links.length < 2) {
+      dialog.querySelectorAll("[data-step]").forEach(function (b) { b.hidden = true; });
+    }
+
+    links.forEach(function (link, i) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        show(i);
+        dialog.showModal();
+      });
+    });
+
+    dialog.addEventListener("click", function (e) {
+      var step = e.target.getAttribute("data-step");
+      if (step) show(current + parseInt(step, 10));
+      else if (e.target === dialog || e.target.hasAttribute("data-close")) dialog.close();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!dialog.open) return;
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+  });
+})();

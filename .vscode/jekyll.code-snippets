@@ -1,0 +1,73 @@
+{
+  // In einer leeren .md-Datei "neuigkeit" oder "einsatz" tippen und Tab drücken.
+  "Front Matter Neuigkeit": {
+    "scope": "markdown",
+    "prefix": "neuigkeit",
+    "body": [
+      "---",
+      "title: \"${1:Titel}\"",
+      "date: ${2:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE}",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Front Matter für eine Neuigkeit (_posts/)"
+  },
+  "Front Matter Einsatz": {
+    "scope": "markdown",
+    "prefix": "einsatz",
+    "body": [
+      "---",
+      "title: \"${1:Titel}\"",
+      "date: ${2:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE}",
+      "time: \"${3:$CURRENT_HOUR:$CURRENT_MINUTE}\"",
+      "ort: \"${4:Ort}\"",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Front Matter für einen Einsatz (_einsaetze/)"
+  },
+  "Zwischentitel": {
+    "scope": "markdown",
+    "prefix": "zwischentitel",
+    "body": ["## ${1:Zwischentitel}", "", "$0"],
+    "description": "Zwischentitel (## ...)"
+  },
+  "Galerie aus Unterordner": {
+    "scope": "markdown",
+    "prefix": "galerie",
+    "body": ["{% include galerie.html ordner=\"${1:unterordner}\" %}", "$0"],
+    "description": "Bilder aus assets/images/neuigkeiten/<Post>/<unterordner>/ als Galerie"
+  },
+  "Tabelle": {
+    "scope": "markdown",
+    "prefix": "tabelle",
+    "body": [
+      "| ${1:Spalte 1} | ${2:Spalte 2} | ${3:Spalte 3} |",
+      "|---|---|---|",
+      "| ${4:Inhalt} | ${5:Inhalt} | ${6:Inhalt} |",
+      "| ${7:Inhalt} | ${8:Inhalt} | ${9:Inhalt} |",
+      "",
+      "$0"
+    ],
+    "description": "Tabelle mit 3 Spalten (weitere Zeilen einfach kopieren)"
+  },
+  "Bild mit Bildunterschrift": {
+    "scope": "markdown",
+    "prefix": "bildtext",
+    "body": [
+      "{% include bild.html datei=\"${1:unterordner/datei.jpg}\" text=\"${2:Von links nach rechts: …}\" %}",
+      "$0"
+    ],
+    "description": "Bild aus dem Bildordner des Posts mit Bildunterschrift"
+  },
+  "Bild einfügen": {
+    "scope": "markdown",
+    "prefix": "bild",
+    "body": [
+      "![${1:Beschreibung}]({{ '/assets/images/${2:datei.jpg}' | relative_url }})"
+    ],
+    "description": "Bild aus assets/images/ einfügen"
+  }
+}

@@ -36,6 +36,40 @@ Falls die Seite mal wieder nicht lädt oder der Build ungewöhnlich lange
 hängt: Prüfen, ob zufällig noch ein alter `jekyll serve`-Prozess läuft
 (`ps aux | grep jekyll`) und diesen beenden, dann neu starten.
 
+## Neue Beiträge in VS Code anlegen
+
+**Per Task (empfohlen):** `Ctrl+Shift+P` → „Tasks: Run Task" → **Neue Neuigkeit**
+oder **Neuer Einsatz**. VS Code fragt nach Titel, Datum (leer = heute) und bei
+Einsätzen nach Alarmzeit und Ort. Die Datei wird mit korrektem Namen
+(`JJJJ-MM-TT-titel.md`) und Front Matter im richtigen Ordner angelegt und geöffnet.
+Danach nur noch den Text schreiben, speichern, committen und auf `main` pushen.
+
+Alternativ im Terminal:
+
+```powershell
+.\scripts\neuer-beitrag.ps1 -Typ Einsatz -Titel "Brand, Scheune" -Ort "Eich" -Zeit "14:05"
+```
+
+**Per Snippet:** Leere `.md`-Datei selbst anlegen, `neuigkeit` bzw. `einsatz`
+tippen und `Tab` drücken → Front Matter wird eingefügt. Mit `bild` + `Tab` wird
+ein Bild aus `assets/images/` eingebunden.
+
+**Bilder zu einer Neuigkeit:** Fotos (`.jpg`, `.png`, `.webp`) in den Ordner
+`assets/images/neuigkeiten/<Dateiname des Posts ohne .md>/` legen, z. B.
+`assets/images/neuigkeiten/2026-11-21-neue-kadermitglieder/`. Sie erscheinen
+automatisch als Galerie unter dem Text (alphabetisch sortiert, also z. B.
+`01-gruppe.jpg`, `02-uebergabe.jpg`). Fotos vorher auf ca. 1600 px Breite
+verkleinern, damit die Seite schnell lädt. Der Task „Neue Neuigkeit" legt den
+Ordner automatisch an.
+
+**Zwischentitel:** Im Text eine Zeile mit `## Titel` beginnen (Snippet
+`zwischentitel`). Für Bilder direkt unter einem Zwischentitel einen
+Unterordner anlegen (z. B. `.../2026-11-21-neue-kadermitglieder/offiziere/`)
+und an der gewünschten Stelle `{% include galerie.html ordner="offiziere" %}`
+einfügen (Snippet `galerie`).
+
+Vorschau: `Ctrl+Shift+V` zeigt das Markdown direkt in VS Code an.
+
 ## Struktur
 
 ```

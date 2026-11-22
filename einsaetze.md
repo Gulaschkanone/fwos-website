@@ -18,4 +18,3 @@ layout: page
   {% endfor %}
 </ul>
 
-<p style="margin-top:32px;color:#4A4744;font-size:.9rem;">Neue Einsätze werden als Datei im Ordner <code>_einsaetze/</code> hinzugefügt.</p>

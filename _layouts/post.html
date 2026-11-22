@@ -8,9 +8,10 @@ layout: default
   </div>
 </section>
 
-<article class="page-content">
+<article class="page-content post-body">
   <div class="container" style="max-width:760px;">
     {{ content }}
+    {% include galerie.html %}
     <p style="margin-top:40px;"><a href="{{ '/neuigkeiten/' | relative_url }}">&larr; Zurück zu allen Neuigkeiten</a></p>
   </div>
 </article>

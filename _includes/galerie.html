@@ -1,0 +1,38 @@
+{%- comment -%}
+  Bildergalerie für Neuigkeiten.
+
+  Ohne Parameter (automatisch unter jedem Post):
+    zeigt alle Bilder direkt im Ordner
+    assets/images/neuigkeiten/<Dateiname des Posts ohne .md>/
+
+  Mit Parameter, z. B. mitten im Text unter einem Zwischentitel:
+    {% include galerie.html ordner="offiziere" %}
+    zeigt die Bilder im Unterordner .../<Post>/offiziere/
+
+  Sortierung alphabetisch nach Dateiname.
+{%- endcomment -%}
+{%- assign post_name = page.path | split: '/' | last | remove: '.md' -%}
+{%- assign ordner = '/assets/images/neuigkeiten/' | append: post_name | append: '/' -%}
+{%- if include.ordner -%}
+  {%- assign ordner = ordner | append: include.ordner | append: '/' -%}
+{%- endif -%}
+{%- assign bilder = site.static_files | where_exp: "f", "f.path contains ordner" | sort: 'path' -%}
+{%- assign anzahl = 0 -%}
+{%- capture items -%}
+  {%- for f in bilder -%}
+    {%- assign rest = f.path | remove_first: ordner -%}
+    {%- if rest contains '/' -%}{%- continue -%}{%- endif -%}
+    {%- assign ext = f.extname | downcase -%}
+    {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' or ext == '.gif' -%}
+      {%- assign anzahl = anzahl | plus: 1 -%}
+      <a class="galerie-bild" href="{{ f.path | relative_url }}">
+        <img src="{{ f.path | relative_url }}" alt="{{ page.title }} – Bild {{ anzahl }}" loading="lazy">
+      </a>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if anzahl > 0 -%}
+<div class="galerie{% if anzahl == 1 %} galerie-einzeln{% endif %}">
+  {{ items }}
+</div>
+{%- endif -%}

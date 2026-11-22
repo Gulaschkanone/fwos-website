@@ -24,8 +24,8 @@ stats:
 
 # Kontakt
 contact:
-  kommandant: "Hptm. Max Muster"
-  strasse: "Feuerwehrstrasse 3"
+  kommandant: "Hptm. Markus Jaussi"
+  strasse: "Weihermatte 3"
   ort: "6210 Sempach"
   email: "kommandant@fwos.ch"
 
@@ -68,6 +68,7 @@ nav:
 # Build-Einstellungen
 # ---------------------------------------------------------------------------
 markdown: kramdown
+timezone: Europe/Zurich
 permalink: /:title/
 
 collections:

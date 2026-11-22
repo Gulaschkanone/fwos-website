@@ -1,0 +1,69 @@
+{
+  // Neue Beiträge anlegen: Ctrl+Shift+P -> "Tasks: Run Task" -> Task wählen
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Website lokal starten",
+      "type": "shell",
+      "command": "bundle exec jekyll serve --force_polling --livereload",
+      // Ruby-Pfad explizit setzen, damit der Task auch funktioniert, wenn
+      // VS Code vor der Ruby-Installation gestartet wurde.
+      "options": { "env": { "PATH": "C:\\Ruby40-x64\\bin;${env:PATH}" } },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Neue Neuigkeit",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile", "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}/scripts/neuer-beitrag.ps1",
+        "-Typ", "Neuigkeit",
+        "-Titel", "${input:titel}",
+        "-Datum", "${input:datum}"
+      ],
+      "presentation": { "reveal": "silent", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Neuer Einsatz",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile", "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}/scripts/neuer-beitrag.ps1",
+        "-Typ", "Einsatz",
+        "-Titel", "${input:titel}",
+        "-Datum", "${input:datum}",
+        "-Zeit", "${input:zeit}",
+        "-Ort", "${input:ort}"
+      ],
+      "presentation": { "reveal": "silent", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "titel",
+      "type": "promptString",
+      "description": "Titel (z. B. \"Brand, Scheune\" oder \"Hauptübung 2026\")"
+    },
+    {
+      "id": "datum",
+      "type": "promptString",
+      "description": "Datum JJJJ-MM-TT (leer lassen = heute)"
+    },
+    {
+      "id": "zeit",
+      "type": "promptString",
+      "description": "Alarmzeit HH:MM (z. B. 14:05)"
+    },
+    {
+      "id": "ort",
+      "type": "promptString",
+      "description": "Ort (z. B. Sempach)"
+    }
+  ]
+}

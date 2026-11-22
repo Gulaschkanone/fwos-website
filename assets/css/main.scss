@@ -842,3 +842,124 @@ $og-material: #B7862C;
 }
 .page-content h2 { margin-top: 1.4em; }
 .page-content ul { padding-left: 1.2em; }
+
+// Tabellen in Markdown-Inhalten (| Spalte | Spalte |)
+.page-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: .95rem;
+}
+.page-content th,
+.page-content td {
+  padding: 10px 14px;
+  border-bottom: 1px solid $line;
+  text-align: left;
+  vertical-align: top;
+}
+.page-content th {
+  background: $feuerrot;
+  color: $paper;
+  font-weight: 700;
+}
+.page-content th:first-child { border-top-left-radius: $radius; }
+.page-content th:last-child { border-top-right-radius: $radius; }
+.page-content tbody tr:nth-child(even) { background: $paper-soft; }
+@media (max-width: 620px) {
+  // Breite Tabellen auf dem Handy seitlich scrollbar machen
+  .page-content table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+// Zwischentitel in Neuigkeiten (## / ### im Markdown)
+.post-body h2 {
+  font-size: 1.45rem;
+  margin: 1.8em 0 .5em;
+  padding-left: 14px;
+  border-left: 4px solid $feuerrot;
+  line-height: 1.25;
+}
+.post-body h3 {
+  font-size: 1.15rem;
+  margin: 1.4em 0 .4em;
+  color: $feuerrot-dark;
+}
+.post-body .galerie { margin-top: 16px; }
+
+// Einzelbild mit Bildunterschrift (_includes/bild.html)
+.bild { margin: 28px 0; }
+.bild-link { display: block; border-radius: $radius; overflow: hidden; }
+.bild-link img { width: 100%; height: auto; }
+.bild figcaption {
+  margin-top: 10px;
+  padding-left: 12px;
+  border-left: 3px solid $feuerrot;
+  font-size: .9rem;
+  color: $ink-soft;
+  line-height: 1.45;
+}
+
+// ---------------------------------------------------------------------------
+// Bildergalerie in Neuigkeiten (_includes/galerie.html)
+// ---------------------------------------------------------------------------
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 32px 0 8px;
+}
+.galerie-einzeln { grid-template-columns: 1fr; }
+.galerie-bild {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius;
+  overflow: hidden;
+  background: $paper-soft;
+}
+.galerie-einzeln .galerie-bild { aspect-ratio: auto; }
+.galerie-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .2s ease;
+}
+.galerie-bild:hover img { transform: scale(1.04); }
+
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 94vw;
+  max-height: 94vh;
+}
+.lightbox::backdrop { background: rgba(0,0,0,.88); }
+.lightbox img {
+  max-width: 94vw;
+  max-height: 86vh;
+  margin: 0 auto;
+  border-radius: $radius;
+}
+.lightbox-caption {
+  max-width: 760px;
+  margin: 12px auto 0;
+  color: $paper;
+  font-size: .95rem;
+  text-align: center;
+}
+.lightbox-caption:empty { display: none; }
+.lightbox-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+.lightbox-bar button {
+  background: rgba(255,255,255,.14);
+  color: $paper;
+  border: 0;
+  border-radius: $radius;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.lightbox-bar button:hover { background: $feuerrot; }

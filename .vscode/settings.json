@@ -1,0 +1,20 @@
+{
+  // Terminals in diesem Projekt immer mit Ruby 4.0 starten (auf diesem PC ist
+  // zusätzlich ein altes Ruby 3.1 installiert, ohne die Jekyll-Gems).
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Ruby40-x64\\bin;${env:PATH}"
+  },
+
+  // Snippets (neuigkeit, einsatz, zwischentitel, galerie, bild) in Markdown nutzbar machen:
+  // Vorschläge beim Tippen anzeigen und mit Tab ergänzen.
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "off",
+      "strings": "off"
+    },
+    "editor.tabCompletion": "onlySnippets",
+    "editor.snippetSuggestions": "top",
+    "editor.wordBasedSuggestions": "off"
+  }
+}
