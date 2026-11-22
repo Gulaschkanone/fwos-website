@@ -109,6 +109,8 @@ sass:
   style: compressed
 
 exclude:
+  - deploy
+  - scripts
   - Gemfile
   - Gemfile.lock
   - README.md

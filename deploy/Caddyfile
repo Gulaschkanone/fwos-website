@@ -1,0 +1,48 @@
+# /etc/caddy/Caddyfile auf dem VPS (185.143.102.218): Webseite und App.
+# Caddy holt die HTTPS-Zertifikate selbst (Let's Encrypt), sobald der Name per DNS auf den VPS zeigt.
+#
+# Webseite: vorläufig unter web.fwos.ch. Nach der DNS-Umstellung von fwos.ch
+# wird "web.fwos.ch" durch "fwos.ch, www.fwos.ch" ersetzt (bzw. ergänzt).
+
+web.fwos.ch {
+    root * /var/www/fwos
+    encode zstd gzip
+    file_server
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+    # Eigene Fehlerseite von Jekyll für nicht vorhandene Seiten
+    handle_errors {
+        @nicht_gefunden expression {err.status_code} == 404
+        handle @nicht_gefunden {
+            rewrite * /404.html
+            file_server
+        }
+    }
+}
+
+# Aufruf über die IP-Adresse: auf die Webseite umleiten (vorübergehend, 302)
+http://185.143.102.218 {
+    redir https://web.fwos.ch{uri}
+}
+
+# App: siehe Repository fwos-app, deploy/Caddyfile.app
+app.fwos.ch {
+    encode zstd gzip
+    request_body {
+        max_size 20MB
+    }
+    reverse_proxy 127.0.0.1:8000
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        -Server
+    }
+}
