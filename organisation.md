@@ -62,8 +62,15 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
+        <span class="orgchart-role">Atemschutzoffizier Zug 1 + 2</span>
+        <span class="orgchart-name">Lt Roman Herzog</span>
+      </div>
+
+      <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Offizier TLF/MS</span>
         <span class="orgchart-name">Lt Pius Köpfli</span>
+        <span class="orgchart-role">Maschinistenoffizier</span>
+        <span class="orgchart-name">Lt Livio Bernet</span>
       </div>
 
       <div class="orgchart-node orgchart-node--material">
@@ -120,6 +127,11 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
+        <span class="orgchart-role">Atemschutzoffizier Zug 1 + 2</span>
+        <span class="orgchart-name">Lt Roman Herzog</span>
+      </div>
+
+      <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Ölwehr-Offizier</span>
         <span class="orgchart-name">Oblt Thomas Kamber</span>
       </div>
@@ -136,7 +148,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
 
       <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Spezialisten-Offizier</span>
-        <span class="orgchart-name">Lt Iwan Bütler</span>
+        <span class="orgchart-name">Lt Florian Koller</span>
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
