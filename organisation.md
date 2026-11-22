@@ -74,7 +74,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       <div class="orgchart-node-pair">
         <div class="orgchart-node orgchart-node--material">
           <span class="orgchart-role">Materialwart</span>
-          <span class="orgchart-name">Fw Lorenz Hofstetter</span>
+          <span class="orgchart-name">Kpl Ramon Troxler</span>
         </div>
         <div class="orgchart-node orgchart-node--material">
           <span class="orgchart-role">Materialwart Stv.</span>
@@ -100,7 +100,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
       <div class="orgchart-node-pair">
         <div class="orgchart-node orgchart-node--command-alt">
           <span class="orgchart-role">Ausbildungsoffizier</span>
-          <span class="orgchart-name">Lt Adriano Cecini</span>
+          <span class="orgchart-name">Lt Mathias Niggli</span>
         </div>
         <div class="orgchart-node orgchart-node--command-alt">
           <span class="orgchart-role">Administration</span>
@@ -126,7 +126,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
 
       <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Absturzsicherung</span>
-        <span class="orgchart-name">Lt Iwan Bütler</span>
+        <span class="orgchart-name">Kpl Chantal Sidler</span>
       </div>
 
       <div class="orgchart-node orgchart-node--fach">
@@ -141,11 +141,11 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
 
       <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Chef Elektro</span>
-        <span class="orgchart-name">Kpl Florian Koller</span>
+        <span class="orgchart-name">Lt Florian Koller</span>
         <span class="orgchart-role">Chef Sanität</span>
         <span class="orgchart-name">Kpl Nicola Kaufmann</span>
         <span class="orgchart-role">Chef Verkehr</span>
-        <span class="orgchart-name">Kpl Mathias Niggli</span>
+        <span class="orgchart-name">Lt Mathias Niggli</span>
       </div>
     </div>
 
