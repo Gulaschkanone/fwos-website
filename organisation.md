@@ -63,7 +63,7 @@ Das aktuelle Organigramm der {{ site.title }} zeigt unsere Kommandostruktur und 
 
       <div class="orgchart-node orgchart-node--fach">
         <span class="orgchart-role">Offizier TLF/MS</span>
-        <span class="orgchart-name">Lt Köpfli Pius</span>
+        <span class="orgchart-name">Lt Pius Köpfli</span>
       </div>
 
       <div class="orgchart-node orgchart-node--material">
