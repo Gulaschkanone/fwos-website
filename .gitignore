@@ -5,3 +5,5 @@ _site/
 vendor/
 .bundle/
 .DS_Store
+# Wird beim Bauen aus der App erzeugt (scripts/einsaetze_holen.py)
+_einsaetze/

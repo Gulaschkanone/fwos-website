@@ -78,7 +78,7 @@ _data/               (optional) weitere strukturierte Daten
 _includes/           Header, Footer, <head>
 _layouts/            default, page, post, einsatz, fahrzeug
 _posts/               Neuigkeiten (ein Markdown-File pro Beitrag)
-_einsaetze/            Einsatzprotokolle (eigene Collection)
+_einsaetze/            Einsätze (beim Bauen aus der App erzeugt, nicht im Repository)
 _ausruestung/           Fahrzeuge/Material (eigene Collection)
 assets/css/main.scss  Alle Styles (Sass, eine Datei)
 assets/js/main.js     Mobiles Menü, Organigramm-Linien
@@ -109,8 +109,12 @@ impressum.md            Impressum / Datenschutz
    `index.html` setzen.
 3. **Neuigkeiten**: Neue Datei in `_posts/` nach dem Schema
    `YYYY-MM-DD-titel.md` mit Front Matter (`title`, `date`) anlegen.
-4. **Einsätze**: Neue Datei in `_einsaetze/` mit Front Matter (`title`,
-   `date`, `time`, `ort`) anlegen.
+4. **Einsätze**: werden in der App (app.fwos.ch → Einsätze) erfasst, mit
+   «Auf der Webseite anzeigen». Beim Bauen holt `scripts/einsaetze_holen.py`
+   sie ab und erzeugt `_einsaetze/` (nicht im Repository). Die Webseite wird
+   täglich um 04:15 UTC neu gebaut; sofort geht es auf GitHub unter Actions →
+   «Deploy auf VPS» → «Run workflow». Lokal vor `jekyll serve` einmal
+   `python3 scripts/einsaetze_holen.py` ausführen.
 5. **Ausrüstung/Fahrzeuge**: Neue Datei in `_ausruestung/` anlegen mit
    Front Matter `title`, `kategorie`, `baujahr`, `kennzeichen`, `besatzung`,
    `standort`, `order` (Sortierung in der Übersicht) und optional `image`
